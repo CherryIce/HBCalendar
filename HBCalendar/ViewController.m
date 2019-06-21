@@ -41,6 +41,9 @@
     self.calendar.sendSelectDate = ^(NSDate * _Nullable selDate) {
         NSLog(@"%@",[[YXDateHelpObject manager] getStrFromDateFormat:@"yyyy-M-d" Date:selDate]);
     };
+    self.calendar.selectYearAndMonthCall = ^{
+      //时间选择器
+    };
 }
 
 

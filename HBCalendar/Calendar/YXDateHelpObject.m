@@ -318,4 +318,29 @@ static YXDateHelpObject *yxDate = nil;
     return [NSString stringWithFormat:@"%.f",msec ? timeLength*1000.0 : timeLength];
 }
 
+//null或者@""都返回yes
+- (BOOL)isNull:(NSString *)string
+{
+    if (!string) {
+        return true;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return true;
+    }
+    if (!string.length) {
+        return true;
+    }
+    
+    if ([string isEqualToString:@"(null)"]) {
+        return true;
+    }
+    
+    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *trimmedStr = [string stringByTrimmingCharactersInSet:set];
+    if (!trimmedStr.length) {
+        return true;
+    }
+    return false;
+}
+
 @end

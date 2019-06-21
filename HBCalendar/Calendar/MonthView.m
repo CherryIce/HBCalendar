@@ -8,8 +8,6 @@
 
 #import "MonthView.h"
 
-#import "CollectionViewCell.h"
-
 @interface MonthView()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 //当前月份
@@ -23,7 +21,7 @@
 
 @end
 
-static NSString * CellID = @"CollectionViewCell";
+static NSString * CellID = @"FDCalendarCell";
 
 @implementation MonthView
 
@@ -53,8 +51,6 @@ static NSString * CellID = @"CollectionViewCell";
     [self addSubview:_collectionV];
     
     [_collectionV registerNib:[UINib nibWithNibName:CellID bundle:nil] forCellWithReuseIdentifier:CellID];
-    
-    [self updateCalendraWuthDate:_currentDate dataArray:nil];
 }
 
 //MARK: - dateMethod
@@ -75,10 +71,13 @@ static NSString * CellID = @"CollectionViewCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    FDCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     /** 根据情况显示不同的东西 */
     NSDate *cellDate = [self dateForCellAtIndexPath:indexPath];
-    [self updateWithObj:cellDate cell:cell];
+    cell.currentDate = _currentDate;
+    
+    FDCalendarModel * m  = [self jungleWithDate:cellDate];
+    [cell updateWithObj:cellDate model:m];
     return cell;
 }
 
@@ -92,58 +91,29 @@ static NSString * CellID = @"CollectionViewCell";
     //[_collectionV reloadData];
 }
 
-#pragma mark --- cell显示 ---
-- (void) updateWithObj:(NSDate *)obj cell:(CollectionViewCell *)cell{
-    if ([[YXDateHelpObject manager] checkSameMonth:obj AnotherMonth:_currentDate]) {
-        [self showDateFunctionWithObj:obj cell:cell];
-    } else {
-        [self showSpaceFunctionCell:cell];
-    }
-}
-
-
-//MARK: - otherMethod
-- (void)showSpaceFunctionCell:(CollectionViewCell *)cell {
-    cell.hidden = true;
-}
-
-- (void)showDateFunctionWithObj:(NSDate *)obj cell:(CollectionViewCell *)cell {
-    
-    cell.hidden = false;
-    
-    cell.dayLab.text = [[YXDateHelpObject manager] getStrFromDateFormat:@"d" Date:obj];
-    
-    NSInteger index = [[YXDateHelpObject manager] getNumberInWeek:obj];
-    if (index == 1 || index == 7) {
-        cell.dayLab.textColor = [UIColor redColor];
-    }else{
-        cell.dayLab.textColor = [UIColor darkTextColor];
-    }
-    
-    if ([[YXDateHelpObject manager] isSameDate:obj AnotherDate:[NSDate date]]) {
-        cell.dayLab.backgroundColor = [UIColor orangeColor];
-    } else {
-        cell.dayLab.backgroundColor = [UIColor clearColor];
-    }
-    
-    //选中状态颜色的改变,不做
-    //    if (_selectDate) {
-    //        if ([[YXDateHelpObject manager] isSameDate:obj AnotherDate:_selectDate]) {
-    //
-    //        } else {
-    //            cell.dayLab.backgroundColor = [UIColor clearColor];
-    //            cell.dayLab.textColor = [UIColor darkTextColor];
-    //
-    //        }
-    //
-    //    }
-}
-
 #pragma mark -- 更新当前数据 --
 - (void)updateCalendraWuthDate:(NSDate *)currentDate dataArray:(nullable NSArray *)dataArray{
     _dataArray = dataArray;
     _currentDate = currentDate;
     [_collectionV reloadData];
+}
+
+//判断当天是否有需处理事件
+- (FDCalendarModel *) jungleWithDate:(NSDate *) date
+{
+    FDCalendarModel * model = [[FDCalendarModel alloc] init];
+    model.isExist = false;
+    for (NSDictionary * d in _dataArray) {
+        if (![[YXDateHelpObject manager] isNull:d[@"date"]]) {
+            if ([[YXDateHelpObject manager] checkSameDate:d[@"date"] AnotherDate:date]) {
+                model.isExist = true;
+                model.endsNum = d[@"endsNum"];
+                model.dueNum = d[@"dueNum"];
+                model.todayPlanIncomeNum = d[@"todayPlanIncomeNum"];
+            }
+        }
+    }
+    return  model;
 }
 
 @end

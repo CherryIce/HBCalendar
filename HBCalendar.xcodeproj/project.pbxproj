@@ -17,9 +17,10 @@
 		6315067922BC75CA006ED4A5 /* HBCalendarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315067822BC75CA006ED4A5 /* HBCalendarUITests.m */; };
 		6315068922BC7662006ED4A5 /* YXDateHelpObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315068822BC7662006ED4A5 /* YXDateHelpObject.m */; };
 		6315068C22BC76EA006ED4A5 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315068B22BC76EA006ED4A5 /* MonthView.m */; };
-		6315069022BC79E4006ED4A5 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315068E22BC79E4006ED4A5 /* CollectionViewCell.m */; };
-		6315069122BC79E4006ED4A5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6315068F22BC79E4006ED4A5 /* CollectionViewCell.xib */; };
 		6315069422BC838B006ED4A5 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6315069322BC838B006ED4A5 /* CalendarView.m */; };
+		637A3E5322BCA7320021A7CE /* FDCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A3E5222BCA7320021A7CE /* FDCalendarModel.m */; };
+		637A3E5822BCA9870021A7CE /* FDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A3E5622BCA9870021A7CE /* FDCalendarCell.m */; };
+		637A3E5922BCA9870021A7CE /* FDCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637A3E5722BCA9870021A7CE /* FDCalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,11 +61,13 @@
 		6315068822BC7662006ED4A5 /* YXDateHelpObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YXDateHelpObject.m; sourceTree = "<group>"; };
 		6315068A22BC76EA006ED4A5 /* MonthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthView.h; sourceTree = "<group>"; };
 		6315068B22BC76EA006ED4A5 /* MonthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthView.m; sourceTree = "<group>"; };
-		6315068D22BC79E4006ED4A5 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		6315068E22BC79E4006ED4A5 /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
-		6315068F22BC79E4006ED4A5 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		6315069222BC838A006ED4A5 /* CalendarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
 		6315069322BC838B006ED4A5 /* CalendarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		637A3E5122BCA7320021A7CE /* FDCalendarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDCalendarModel.h; sourceTree = "<group>"; };
+		637A3E5222BCA7320021A7CE /* FDCalendarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCalendarModel.m; sourceTree = "<group>"; };
+		637A3E5522BCA9870021A7CE /* FDCalendarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDCalendarCell.h; sourceTree = "<group>"; };
+		637A3E5622BCA9870021A7CE /* FDCalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCalendarCell.m; sourceTree = "<group>"; };
+		637A3E5722BCA9870021A7CE /* FDCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FDCalendarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,17 +153,27 @@
 		6315068622BC75DB006ED4A5 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				6315068722BC7662006ED4A5 /* YXDateHelpObject.h */,
-				6315068822BC7662006ED4A5 /* YXDateHelpObject.m */,
-				6315068A22BC76EA006ED4A5 /* MonthView.h */,
-				6315068B22BC76EA006ED4A5 /* MonthView.m */,
-				6315068D22BC79E4006ED4A5 /* CollectionViewCell.h */,
-				6315068E22BC79E4006ED4A5 /* CollectionViewCell.m */,
-				6315068F22BC79E4006ED4A5 /* CollectionViewCell.xib */,
+				637A3E5422BCA7400021A7CE /* model_view */,
 				6315069222BC838A006ED4A5 /* CalendarView.h */,
 				6315069322BC838B006ED4A5 /* CalendarView.m */,
+				6315068A22BC76EA006ED4A5 /* MonthView.h */,
+				6315068B22BC76EA006ED4A5 /* MonthView.m */,
+				6315068722BC7662006ED4A5 /* YXDateHelpObject.h */,
+				6315068822BC7662006ED4A5 /* YXDateHelpObject.m */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		637A3E5422BCA7400021A7CE /* model_view */ = {
+			isa = PBXGroup;
+			children = (
+				637A3E5122BCA7320021A7CE /* FDCalendarModel.h */,
+				637A3E5222BCA7320021A7CE /* FDCalendarModel.m */,
+				637A3E5522BCA9870021A7CE /* FDCalendarCell.h */,
+				637A3E5622BCA9870021A7CE /* FDCalendarCell.m */,
+				637A3E5722BCA9870021A7CE /* FDCalendarCell.xib */,
+			);
+			path = model_view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +281,8 @@
 			files = (
 				6315066122BC75C9006ED4A5 /* LaunchScreen.storyboard in Resources */,
 				6315065E22BC75C9006ED4A5 /* Assets.xcassets in Resources */,
-				6315069122BC79E4006ED4A5 /* CollectionViewCell.xib in Resources */,
 				6315065C22BC75C8006ED4A5 /* Main.storyboard in Resources */,
+				637A3E5922BCA9870021A7CE /* FDCalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6315069022BC79E4006ED4A5 /* CollectionViewCell.m in Sources */,
+				637A3E5322BCA7320021A7CE /* FDCalendarModel.m in Sources */,
+				637A3E5822BCA9870021A7CE /* FDCalendarCell.m in Sources */,
 				6315069422BC838B006ED4A5 /* CalendarView.m in Sources */,
 				6315068C22BC76EA006ED4A5 /* MonthView.m in Sources */,
 				6315068922BC7662006ED4A5 /* YXDateHelpObject.m in Sources */,
@@ -474,6 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LGN7SU938D;
 				INFOPLIST_FILE = HBCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LGN7SU938D;
 				INFOPLIST_FILE = HBCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

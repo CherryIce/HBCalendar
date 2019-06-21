@@ -139,6 +139,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)getStampStrFromTimeStrWithFormat:(NSString *)format timeStr:(NSString *)timeStr msec:(BOOL)msec;
 
+/**
+ *null或者@""都返回yes
+ */
+- (BOOL)isNull:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END
