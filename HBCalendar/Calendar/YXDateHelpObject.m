@@ -170,7 +170,7 @@ static YXDateHelpObject *yxDate = nil;
 }
 
 //判断两个月份大小
-- (int)compareMonth:(NSDate*)_month1 AnotherMonth:(NSDate*)_month2 {
+- (int)campareMonth:(NSDate*)_month1 AnotherMonth:(NSDate*)_month2 {
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents* m1 = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:_month1];
     NSDateComponents* m2 = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:_month2];
@@ -178,9 +178,9 @@ static YXDateHelpObject *yxDate = nil;
     if ((m1.year == m2.year) && (m1.month == m2.month))
     {
         rt = 0;
-    }else if (((m1.year > m2.year) && (m1.month < m2.month) ) || (m1.year < m2.year)){
+    }else if (((m1.year == m2.year) && (m1.month < m2.month)) || (m1.year < m2.year)){
         rt = -1;
-    }else if (((m1.year == m2.year) && (m1.month > m2.month)) || (m1.year < m2.year)){
+    }else if (((m1.year == m2.year) && (m1.month > m2.month)) || (m1.year > m2.year)){
         rt = 1;
     }
     return rt;

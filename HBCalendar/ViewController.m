@@ -30,8 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.calendar.maxDate = [[YXDateHelpObject manager] getNextMonth:[NSDate date]];
-    self.calendar.minDate = [[YXDateHelpObject manager] getDataFromStrFormat:@"yyyy-MM-dd" String:@"2018-12-01"];
+    self.calendar.maxDate = [[YXDateHelpObject manager] getDataFromStrFormat:@"yyyy-MM-dd" String:@"2019-12-01"];//[[YXDateHelpObject manager] getNextMonth:[NSDate date]];
+    self.calendar.minDate = [[YXDateHelpObject manager] getDataFromStrFormat:@"yyyy-MM-dd" String:@"2018-01-01"];
     
     __weak typeof(self) weakSelf = self;
     self.calendar.leftRightCall = ^(NSDate * _Nonnull date) {
